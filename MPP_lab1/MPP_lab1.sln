@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPP_lab1", "MPP_lab1\MPP_lab1.csproj", "{6DBEFCA8-CE11-47E7-BAC2-945B0E554A80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DBEFCA8-CE11-47E7-BAC2-945B0E554A80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DBEFCA8-CE11-47E7-BAC2-945B0E554A80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DBEFCA8-CE11-47E7-BAC2-945B0E554A80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DBEFCA8-CE11-47E7-BAC2-945B0E554A80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DF30A5F-3956-40BB-ADF4-4987D6C51B27}
+	EndGlobalSection
+EndGlobal
