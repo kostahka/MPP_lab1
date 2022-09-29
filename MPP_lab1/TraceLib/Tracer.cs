@@ -77,7 +77,7 @@ namespace TraceLib
             }
             else
             {
-                
+
                 threadTraceResult.AddMethod(methodTraceResult);
                 threadTraceResult.AddTime(methodTraceResult.time);
             }
@@ -87,7 +87,7 @@ namespace TraceLib
             return threadTraceResult;
         }
     }
-    public class Tracer:ITracer
+    public class Tracer : ITracer
     {
         private Dictionary<int, ThreadTracer> threadTracers = new Dictionary<int, ThreadTracer>();
         public void StartTrace()
@@ -120,10 +120,10 @@ namespace TraceLib
         {
             var results = new Dictionary<int, ThreadTraceResult>();
 
-            foreach(var value in threadTracers.Values)
+            foreach (var value in threadTracers.Values)
             {
                 ThreadTraceResult threadResult = value.GetThreadTraceResult();
-                results[threadResult.id] = threadResult;
+                results.Add(threadResult.id, threadResult);
             }
 
             var result = new TraceResult(results);
@@ -132,3 +132,4 @@ namespace TraceLib
         }
     }
 }
+

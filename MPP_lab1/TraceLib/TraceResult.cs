@@ -49,10 +49,15 @@ namespace TraceLib
     }
     public class TraceResult
     {
-        public readonly Dictionary<int, ThreadTraceResult> threads = new Dictionary<int, ThreadTraceResult>();
+        public Dictionary<int, ThreadTraceResult> threads { get; private set; }
+        public TraceResult()
+        {
+            threads = new Dictionary<int, ThreadTraceResult>();
+        }
         public TraceResult(Dictionary<int, ThreadTraceResult> threads)
         {
             this.threads = threads;
         }
     }
 }
+
