@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace TraceLib
 {
+    [Serializable]
     public class MethodTraceResult
     {
+        [XmlAttribute("name")]
         public string methodName;
+        [XmlAttribute("class")]
         public string className;
+        [XmlAttribute]
         public long time;
+        
+        [XmlElement("method")]
         public readonly List<MethodTraceResult> childMethods = new List<MethodTraceResult>();
 
         public void SetTime(long time)
@@ -28,10 +35,15 @@ namespace TraceLib
             this.childMethods.Add(childMethodTraceRes);
         }
     }
+    [Serializable]
+    [XmlRoot("thread")]
     public class ThreadTraceResult
     {
+        [XmlAttribute]
         public int id;
+        [XmlAttribute]
         public long time = 0;
+        [XmlElement("method")]
         public readonly List<MethodTraceResult> methods = new List<MethodTraceResult>();
 
         public void AddTime(long time)
@@ -47,17 +59,17 @@ namespace TraceLib
             this.methods.Add(methodTraceRes);
         }
     }
+    [Serializable]
     public class TraceResult
     {
-        public Dictionary<int, ThreadTraceResult> threads { get; private set; }
-        public TraceResult()
-        {
-            threads = new Dictionary<int, ThreadTraceResult>();
-        }
+        public readonly Dictionary<int, ThreadTraceResult> threads = new Dictionary<int, ThreadTraceResult>();
         public TraceResult(Dictionary<int, ThreadTraceResult> threads)
         {
             this.threads = threads;
         }
+        public TraceResult()
+        {
+            threads = new Dictionary<int, ThreadTraceResult>();
+        }
     }
 }
-
