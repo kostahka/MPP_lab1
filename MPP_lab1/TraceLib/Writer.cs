@@ -13,5 +13,10 @@ namespace TraceLib
             Console.OpenStandardOutput();
             Console.WriteLine(text + "\n");
         }
+        public void toFile(string text, string fileName)
+        {
+            System.IO.File.WriteAllText(fileName, text);
+            Console.WriteLine("Writing to the file was successful.\n");
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace TraceLib
 {
@@ -15,6 +16,7 @@ namespace TraceLib
         public class Root
         {
             [XmlElement(ElementName = "thread")]
+            [JsonProperty("threads")]
             public List<ThreadTraceResult> res = new List<ThreadTraceResult>();
             public Root() { }
             public Root(TraceResult traceResult)
@@ -35,6 +37,14 @@ namespace TraceLib
             formatter.Serialize(stringWriter, root);
 
             return stringWriter.ToString();
+        }
+
+        public string toJSON(TraceResult result)
+        {
+            var root = new Root(result);
+
+            string json = JsonConvert.SerializeObject(root, Formatting.Indented);
+            return json;       
         }
     }
 }

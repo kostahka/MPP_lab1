@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
@@ -9,18 +10,26 @@ namespace TraceLib
     public class MethodTraceResult
     {
         [XmlAttribute("name")]
+        [JsonProperty("name")]
         public string methodName;
         [XmlAttribute("class")]
+        [JsonProperty("class")]
         public string className;
-        [XmlAttribute]
+        [XmlAttribute("time")]
+        [JsonProperty("time")]
+        public string msTime;
+        [XmlIgnore]
+        [JsonIgnore]
         public long time;
         
         [XmlElement("method")]
+        [JsonProperty("methods")]
         public readonly List<MethodTraceResult> childMethods = new List<MethodTraceResult>();
 
         public void SetTime(long time)
         {
             this.time = time;
+            msTime = time + "ms";
         }
         public void SetMethodName(string methodName)
         {
@@ -41,14 +50,19 @@ namespace TraceLib
     {
         [XmlAttribute]
         public int id;
-        [XmlAttribute]
+        [XmlIgnore]
+        [JsonIgnore]
         public long time = 0;
+        [XmlAttribute("time")]
+        [JsonProperty("time")]
+        public string msTime;
         [XmlElement("method")]
         public readonly List<MethodTraceResult> methods = new List<MethodTraceResult>();
 
         public void AddTime(long time)
         {
             this.time += time;
+            msTime = time + "ms";
         }
         public void SetId(int id)
         {
